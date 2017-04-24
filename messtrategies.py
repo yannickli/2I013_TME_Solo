@@ -102,14 +102,16 @@ class SlalomStrategyJ1(Strategy):
             return BDB.goToBall(mystate)
         """ sinon """
         distance = state.player_state(id_team,id_player).position.distance(zone.position+zone.l/2.)
-        if mystate.can_shoot():
-            if (distance<10):
-                return BDB.TirerEn(mystate,zone.position+zone.l/2.,0.5)
-            elif (distance>30): 
-                return BDB.TirerEn(mystate,zone.position+zone.l/2.,3)
-            else:
-                return BDB.TirerEn(mystate,zone.position+zone.l/2.,1)
-        return BDB.goToBall(mystate)
+        if (zone.position.y<=75):
+            if mystate.can_shoot():
+                if (distance<50):
+                    return BDB.TirerEn(mystate,zone.position+zone.l/2.,0.5)
+                elif (distance>30): 
+                    return BDB.TirerEn(mystate,zone.position+zone.l/2.,3)
+                else:
+                    return BDB.TirerEn(mystate,zone.position+zone.l/2.,1)
+            return BDB.goToBall(mystate)
+        return SoccerAction()
         
         
 class SlalomStrategyJ2(Strategy):
@@ -134,12 +136,14 @@ class SlalomStrategyJ2(Strategy):
             return BDB.goToBall(mystate)
         """ sinon """
         distance = state.player_state(id_team,id_player).position.distance(zone.position+zone.l/2.)
-        if mystate.can_shoot():
-            if (distance<10):
-                return BDB.TirerEn(mystate,zone.position+zone.l/2.,0.5)
-            elif (distance>30): 
-                return BDB.TirerEn(mystate,zone.position+zone.l/2.,3)
-            else:
-                return BDB.TirerEn(mystate,zone.position+zone.l/2.,1)
-        return BDB.goToBall(mystate)
+        if (zone.position.y>40):
+            if mystate.can_shoot():
+                if (distance<10):
+                    return BDB.TirerEn(mystate,zone.position+zone.l/2.,0.5)
+                elif (distance>30): 
+                    return BDB.TirerEn(mystate,zone.position+zone.l/2.,3)
+                else:
+                    return BDB.TirerEn(mystate,zone.position+zone.l/2.,1)
+            return BDB.goToBall(mystate)
+        return SoccerAction()
         

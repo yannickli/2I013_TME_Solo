@@ -57,5 +57,5 @@ show_simu(simu)
 simu = Parcours3(team1=team1,vitesse=GOLF)
 show_simu(simu)
 """
-simu = Parcours4(team1=team2,team2=team0,vitesse=SLALOM)
+simu = Parcours4(team1=team3,team2=team0,vitesse=SLALOM)
 show_simu(simu)
